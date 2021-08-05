@@ -1,0 +1,84 @@
+
+<form
+    [formGroup] = "signupForm"
+    (ngSubmit) = "onSubmit()"
+    class="text-center border border-light p-5"
+>
+    <h4 class="h4 mb-4">Sign up</h4>
+    <div class="form-group">
+        <input
+        type="text"
+        id="username"
+        name="username"
+        formControlName="username"
+        class="form-control mb-4"
+        placeholder="Username"
+        > 
+        <span
+            *ngIf="!signupForm.get('username')!.valid && signupForm.get('username')!.touched && signupForm.get('username')!.errors"
+            class="help-block"
+        >
+            <span *ngIf="signupForm.get('username')!.errors!['isUsernameDuplicated']">This username has been used!</span>
+            <span *ngIf="signupForm.get('username')!.errors!['required']">This field is required!</span>
+        </span>
+    </div>
+
+    <div class="form-group">
+        <input
+        type="text"
+        id="email"
+        name="email"
+        formControlName="email"
+        class="form-control mb-4"
+        placeholder="E-mail"
+        > 
+        <span
+            *ngIf="!(signupForm.get('email')!.valid) && signupForm.get('email')!.touched && signupForm.get('email')!.errors"
+            class="help-block"
+        >
+            <span *ngIf="signupForm.get('email')!.errors!['isEmailDuplicated']">This email has been used!</span>
+            <span *ngIf="signupForm.get('email')!.errors!['email']">This is invalid email!</span>
+            <span *ngIf="signupForm.get('email')!.errors!['required']">This field is required!</span>
+        </span>
+    </div>
+
+    <div class="form-group">
+
+        <input
+        type="password"
+        id="password"
+        name="password"
+        formControlName="password"
+        class="form-control mb-4"
+        placeholder="Password"
+        > 
+        <span
+            *ngIf="!(signupForm.get('password')!.valid) && signupForm.get('password')!.touched && signupForm.get('password')!.errors"
+            class="help-block"
+        >
+            <span *ngIf="signupForm.get('password')!.errors!['minlength']">Password must be at least 8 character long!</span>
+            <span *ngIf="signupForm.get('password')!.errors!['required']">This field is required!</span>
+        </span>
+    </div>
+
+    <div
+        class="radio roleRadio"
+    >
+        <h4>Role: </h4>
+        <label  *ngFor="let role of roles">
+            <input
+                type="radio"
+                formControlName="role"
+                [value]="role"
+            >
+            {{role}}
+        </label>
+
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="!signupForm.valid">Sign up</button>
+    
+    <p>Already has an account?
+        <a routerLink="/login">Login</a>
+      </p>
+</form>
+

@@ -1,0 +1,87 @@
+<div class="userformContainer">
+    <form
+        [formGroup] = "userForm"
+        (ngSubmit) = "onSubmit()"
+    >
+        <div class="form-group">
+            <label for="username">Username
+
+            </label>
+            <input
+            type="text"
+            id="username"
+            name="username"
+            formControlName="username"
+            class="form-control"
+            [placeholder]="(chosenUser) ? chosenUser.username : ''"
+            > 
+            <span
+                *ngIf="!userForm.get('username')!.valid && userForm.get('username')!.touched && userForm.get('username')!.errors"
+                class="help-block"
+            >
+                <span *ngIf="userForm.get('username')!.errors!['isUsernameDuplicated']">This username has been used!</span>
+                <span *ngIf="userForm.get('username')!.errors!['required']">This field is required!</span>
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email
+
+            </label>
+            <input
+            type="text"
+            id="email"
+            name="email"
+            formControlName="email"
+            class="form-control"
+            [placeholder]="(chosenUser) ? chosenUser.email : ''"
+            > 
+            <span
+                *ngIf="!(userForm.get('email')!.valid) && userForm.get('email')!.touched && userForm.get('email')!.errors"
+                class="help-block"
+            >
+                <span *ngIf="userForm.get('email')!.errors!['isEmailDuplicated']">This email has been used!</span>
+                <span *ngIf="userForm.get('email')!.errors!['email']">This is invalid email!</span>
+                <span *ngIf="userForm.get('email')!.errors!['required']">This field is required!</span>
+            </span>
+        </div>
+
+        <div
+            class="radio"
+            *ngFor="let role of roles"
+        >
+        
+            <label>
+                <input
+                    type="radio"
+                    formControlName="role"
+                    [value]="role"
+                    [checked]='(chosenUser)? (role === chosenUser!.role) : false '
+                >
+                {{role}}
+            </label>
+
+        </div>
+
+        <div
+            class="radio"
+            *ngFor="let statu of status"
+        >
+        
+            <label>
+                <input
+                    type="radio"
+                    formControlName="status"
+                    [value]="statu"
+                    [checked]='(chosenUser)? (statu === chosenUser!.status) : false '
+                >
+                {{statu}}
+            </label>
+
+        </div>
+
+
+        <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid">Submit</button>
+        
+    </form>
+</div>

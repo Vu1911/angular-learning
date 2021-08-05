@@ -1,0 +1,11 @@
+form {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+}

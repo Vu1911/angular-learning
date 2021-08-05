@@ -1,0 +1,31 @@
+form {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+    margin-bottom: 2px !important;
+}
+
+.form-group{
+    margin-bottom: 10px;
+}
+
+span {
+    font-size: small;
+    color: red;
+}
+
+.roleRadio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

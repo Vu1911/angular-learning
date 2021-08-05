@@ -1,0 +1,21 @@
+.navbar {
+    margin-bottom: 10px;
+}
+
+.container-fluid {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+button {
+    color: #0b5ed7;
+}
+
+.bodyContainer {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}

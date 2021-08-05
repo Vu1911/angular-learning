@@ -1,0 +1,10 @@
+<div class="usersDashboardContainer">
+    <h1>This is user dashboard</h1>
+    <div *ngFor="let account of accounts">
+        <h2 (click)='onGetAccount(account!.username)'>{{account!.username}}</h2>
+    </div>
+
+    <div class="userFormContainer">
+        <app-users-form *ngIf="isShowUserForm" [username]="chosenUsername" (isShowUserform)="closeUserForm($event)"></app-users-form>
+    </div>
+</div>
